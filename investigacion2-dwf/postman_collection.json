@@ -1,0 +1,65 @@
+{
+  "info": {
+    "_postman_id": "b4dccce7-c193-48d9-8b91-9fb7dae199f5",
+    "name": "dwf-miniproyecto API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "chatgpt"
+  },
+  "item": [
+    {
+      "name": "List Orders",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/v1/orders"
+      }
+    },
+    {
+      "name": "Create Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"customerName\":\"Carlos\",\"total\":120.50}"
+        },
+        "url": "http://localhost:8080/api/v1/orders"
+      }
+    },
+    {
+      "name": "Get Order by ID",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/v1/orders/1"
+      }
+    },
+    {
+      "name": "Update Order",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"customerName\":\"Carlos\",\"total\":150.00,\"status\":\"PAID\"}"
+        },
+        "url": "http://localhost:8080/api/v1/orders/1"
+      }
+    },
+    {
+      "name": "Delete Order",
+      "request": {
+        "method": "DELETE",
+        "url": "http://localhost:8080/api/v1/orders/1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dwf-miniproyecto
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dwf-miniproyecto
+  template:
+    metadata:
+      labels:
+        app: dwf-miniproyecto
+    spec:
+      containers:
+        - name: api
+          image: your-registry/dwf-miniproyecto:0.0.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: dwf-miniproyecto-config
+            - secretRef:
+                name: dwf-miniproyecto-secrets
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 2
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            timeoutSeconds: 2
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"

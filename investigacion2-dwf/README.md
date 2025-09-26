@@ -32,10 +32,10 @@ Swagger/OpenAPI UI: `http://localhost:8080/swagger-ui/index.html`
 
 ```bash
 # Construir imagen (desde la raíz del proyecto)
-docker build -t dwf-miniproyecto:0.0.1 .
+docker build -t dwf-api-eda .
 
 # Ejecutar
-docker run --rm -p 8080:8080 -e APP_LOG_LEVEL=DEBUG dwf-miniproyecto:0.0.1
+docker run --rm -p 8080:8080 -e APP_LOG_LEVEL=DEBUG dwf-api-eda
 ```
 
 ## Kubernetes
